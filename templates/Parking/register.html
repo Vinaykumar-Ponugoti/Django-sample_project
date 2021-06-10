@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book slot</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'Parking/style.css' %}" />
+    </head>
+    <body>
+        <div class="main-div">
+            <div class="box">
+                <h1>Book Slot</h1>
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div class="inputbox">
+                        <input type="text" name="carid" autocomplete="off" required>
+                        <label>Carid</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="mobile" autocomplete="off" required>
+                        <label>Mobile Number</label>
+                    </div>
+                    <button class="submit-button">Book</button>
+                </form>
+                <div>
+                    {% for message in messages %}
+                    <h3> {{ message }} </h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

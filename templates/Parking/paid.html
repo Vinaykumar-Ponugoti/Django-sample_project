@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payment done?</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'Parking/style.css' %}" />
+    </head>
+    <body>
+        <div class="main-div">
+            <div class="box">
+                <div>
+                    {% for message in messages %}
+                    <h3> {{ message }} </h3>
+                    {% endfor %}
+                </div>
+                <form action="{% url 'paid' carid %}" method="get">
+                    {% csrf_token %}
+                    <div>
+        
+                        <button class="submit-button">Yes</button>
+                        <a href="{% url 'checkout' %}"><button> Back </button></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
